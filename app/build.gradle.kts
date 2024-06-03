@@ -73,10 +73,10 @@ dependencies {
     implementation(libs.lifecycle.livedata.ktx)
     implementation(libs.activity.ktx)
     implementation(libs.room.runtime)
-    implementation("androidx.paging:paging-runtime:3.3.0")
-    implementation ("androidx.room:room-paging:2.4.2")
-    implementation ("androidx.room:room-ktx:2.4.2")
-    ksp ("androidx.room:room-compiler:2.4.0-rc01")
+    implementation(libs.paging.runtime.android)
+    implementation(libs.room.paging)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
     androidTestImplementation(libs.androidx.core.testing)
     androidTestImplementation(libs.kotlinx.coroutines.test)
 
@@ -84,5 +84,5 @@ dependencies {
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.mockito.core)
     testImplementation(libs.mockito.inline)
-    testImplementation ("org.mockito.kotlin:mockito-kotlin:4.1.0")
+    testImplementation(libs.mockito.kotlin)
 }

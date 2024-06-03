@@ -45,6 +45,7 @@ class MainViewModelTest {
         Mockito.`when`(userRepository.getStories("token")).thenReturn(expectedStories)
 
         val mainViewModel = MainViewModel(userRepository)
+        mainViewModel.fetchStories("token")
         val actualStories: PagingData<StoryEntity> = mainViewModel.stories.getOrAwaitValue()
 
         val differ = AsyncPagingDataDiffer(
@@ -68,6 +69,7 @@ class MainViewModelTest {
         Mockito.`when`(userRepository.getStories("token")).thenReturn(expectedStories)
 
         val mainViewModel = MainViewModel(userRepository)
+        mainViewModel.fetchStories("token")
         val actualStories: PagingData<StoryEntity> = mainViewModel.stories.getOrAwaitValue()
 
         val differ = AsyncPagingDataDiffer(
