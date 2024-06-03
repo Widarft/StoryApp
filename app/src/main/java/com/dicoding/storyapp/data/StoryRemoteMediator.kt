@@ -29,7 +29,7 @@ class StoryRemoteMediator(
         loadType: LoadType,
         state: PagingState<Int, StoryEntity>
     ): MediatorResult {
-        val formattedToken = "Bearer $token"
+        val formattedToken = if (token.startsWith("Bearer ")) token else "Bearer $token"
         Log.d("RemoteMediator", "Using token: $formattedToken")
         val page = when (loadType) {
             LoadType.REFRESH -> {

@@ -47,8 +47,8 @@ class UserRepository private constructor(
     @OptIn(ExperimentalPagingApi::class)
     fun getStories(token: String): LiveData<PagingData<StoryEntity>> {
         val pagingSourceFactory = { storyDatabase.storyDao().getAllStories() }
-        val formattedToken = "Bearer $token"
-        Log.d("UserRepository", "Formatted Token for Paging: $formattedToken")
+        //val formattedToken = "Bearer $token"
+        Log.d("UserRepository", "Token for Paging: $token")
 
         return Pager(
             config = PagingConfig(
@@ -56,7 +56,7 @@ class UserRepository private constructor(
                 prefetchDistance = 5,
                 enablePlaceholders = false
             ),
-            remoteMediator = StoryRemoteMediator(apiService, storyDatabase, formattedToken),
+            remoteMediator = StoryRemoteMediator(apiService, storyDatabase, token),
             pagingSourceFactory = pagingSourceFactory
         ).liveData
     }
