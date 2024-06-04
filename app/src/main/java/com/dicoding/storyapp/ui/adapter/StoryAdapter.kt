@@ -25,11 +25,15 @@ class StoryAdapter : PagingDataAdapter<StoryEntity, StoryAdapter.StoryViewHolder
     }
 
     override fun onBindViewHolder(holder: StoryViewHolder, position: Int) {
-        val item = getItem(position)
-        if (item != null) {
-            holder.bind(item)
-        } else {
-            Log.e("StoryAdapter", "Item at position $position is null")
+        try{
+            val item = getItem(position)
+            if (item != null) {
+                holder.bind(item)
+            } else {
+                Log.e("StoryAdapter", "Item at position $position is null")
+            }
+        }catch (e: Exception){
+            Log.d("onBindViewHolder", e.message.toString())
         }
     }
 
